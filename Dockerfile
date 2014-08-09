@@ -14,6 +14,8 @@ RUN echo PATH=$PATH
 RUN rbenv init -
 RUN rbenv install 2.1.2 && rbenv global 2.1.2
 
+
+
 # Never install rubygem docs
 RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
 
@@ -27,10 +29,11 @@ ADD Gemfile.lock Gemfile.lock
 # Install app rubygem dependencies
 RUN bundle install
 
-# Change and link to the app directory
-RUN mkdir /app
-WORKDIR /app
-ADD . /app
+RUN mkdir /apple
+WORKDIR /apple
 
+# Change and link to the app directory
+
+ADD . /apple
 RUN ls
 RUN pwd
